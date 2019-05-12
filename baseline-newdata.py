@@ -138,21 +138,20 @@ def model(classes):
 
     model.fit(train, train_labels, epochs=epochs, verbose=verbose)
     loss, acc = model.evaluate(test, test_labels, verbose=verbose)
-    print(str(acc*100))
+    print(str(acc * 100))
 
 
 vocab_min_occurrence = 2
-verbose = 0
+verbose = 0bb
 epochs = 10
 num_classes = 3
 
 # vocab = Counter()
 # create_vocab_file(["20_newsgroup/med", "20_newsgroup/space", "20_newsgroup/electronics"])
 
-# print("\n--------Baseline With NewsGroup Data--------")
-for i in range(10):
-    vocab = load_vocab_file("vocab-newsgroup.txt")
-    electronics_class = get_class("20_newsgroup/sci.electronics", "20_newsgroup/sci.electronics.test", 0)
-    med_class = get_class("20_newsgroup/sci.med", "20_newsgroup/sci.med.test", 1)
-    space_class = get_class("20_newsgroup/sci.space", "20_newsgroup/sci.space.test", 2)
-    model([electronics_class, med_class, space_class])
+print("\n--------Baseline With NewsGroup Data--------")
+vocab = load_vocab_file("vocab-newsgroup.txt")
+electronics_class = get_class("20_newsgroup/sci.electronics", "20_newsgroup/sci.electronics.test", 0)
+med_class = get_class("20_newsgroup/sci.med", "20_newsgroup/sci.med.test", 1)
+space_class = get_class("20_newsgroup/sci.space", "20_newsgroup/sci.space.test", 2)
+model([electronics_class, med_class, space_class])

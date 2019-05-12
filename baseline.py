@@ -133,15 +133,14 @@ def model(classes):
 
 
 vocab_min_occurrence = 2
-verbose = 0
+verbose = 2
 epochs = 10
 
 # vocab = Counter()
 # create_vocab_file(["txt_sentoken/neg", "txt_sentoken/pos"])
 
-# print("--------Baseline With News Reviews--------")
-for i in range(10):
-    vocab = load_vocab_file("vocab-review.txt")
-    positive_class = get_class("txt_sentoken/pos", "txt_sentoken/pos-test", 0)
-    negative_class = get_class("txt_sentoken/neg", "txt_sentoken/neg-test", 1)
-    model([positive_class, negative_class])
+print("--------Baseline With News Reviews--------")
+vocab = load_vocab_file("vocab-review.txt")
+positive_class = get_class("txt_sentoken/pos", "txt_sentoken/pos-test", 0)
+negative_class = get_class("txt_sentoken/neg", "txt_sentoken/neg-test", 1)
+model([positive_class, negative_class])

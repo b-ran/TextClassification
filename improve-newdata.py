@@ -127,7 +127,6 @@ def model(classes):
     modes = ['binary', 'count', 'tfidf', 'freq']
 
     for mode in modes:
-
         train = tokenizer.texts_to_matrix(train_documents, mode)
         test = tokenizer.texts_to_matrix(test_documents, mode)
         n_words = test.shape[1]
@@ -142,24 +141,24 @@ def model(classes):
 
         model.fit(train, train_labels, epochs=epochs, verbose=verbose)
         loss, acc = model.evaluate(test, test_labels, verbose=verbose)
-        print(mode.capitalize(), str(acc*100))
+        print(mode.capitalize(), str(acc * 100))
 
 
 vocab_min_occurrence = 2
-verbose = 0
+verbose = 2
 epochs = 10
 num_classes = 3
 
 # vocab = Counter()
 # create_vocab_file(["20_newsgroup/med", "20_newsgroup/space", "20_newsgroup/electronics"])
 
-# print("\n--------Improved Baseline With NewsGroup Data--------")
-for i in range(10):
-    vocab = load_vocab_file("vocab-newsgroup.txt")
-    electronics_class = get_class("20_newsgroup/sci.electronics", "20_newsgroup/sci.electronics.test", 0)
-    med_class = get_class("20_newsgroup/sci.med", "20_newsgroup/sci.med.test", 1)
-    space_class = get_class("20_newsgroup/sci.space", "20_newsgroup/sci.space.test", 2)
-    model([electronics_class, med_class, space_class])
+print("\n--------Improved Baseline With NewsGroup Data--------")
+
+vocab = load_vocab_file("vocab-newsgroup.txt")
+electronics_class = get_class("20_newsgroup/sci.electronics", "20_newsgroup/sci.electronics.test", 0)
+med_class = get_class("20_newsgroup/sci.med", "20_newsgroup/sci.med.test", 1)
+space_class = get_class("20_newsgroup/sci.space", "20_newsgroup/sci.space.test", 2)
+model([electronics_class, med_class, space_class])
 
 # tokenizer = Tokenizer()
 
@@ -174,4 +173,3 @@ for i in range(10):
 # print(tokenizer.texts_to_matrix(words, 'tfidf'))
 # print('')
 # print(tokenizer.texts_to_matrix(words, 'freq'))
-
